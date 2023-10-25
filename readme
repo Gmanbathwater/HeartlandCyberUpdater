@@ -1,3 +1,4 @@
+OPTIONAL: ensure your directory is home (makes auto remover work) (just do it please)
 1: git clone https://github.com/Gmanbathwater/HeartlandCyberUpdater
 2: cd HeartlandCyberUpdater
 3: chmod +rwx cyberRangeUpdater.sh
