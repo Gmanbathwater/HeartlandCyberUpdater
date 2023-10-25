@@ -12,7 +12,7 @@ mkdir CourseFiles
 cd CourseFiles
 mkdir CyberSecurity
 cd CyberSecurity
-git clone https://github.com/cyber-org/documents
+git clone https://github.com/cyber-org/documents #change this to change updates
 cd ..
 cd ..
 if [ -e HeartlandCyberUpdater ]
