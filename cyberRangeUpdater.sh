@@ -11,3 +11,9 @@ cd CourseFiles
 mkdir CyberSecurity
 cd CyberSecurity
 git clone https://github.com/cyber-org/documents
+cd ..
+cd ..
+if (( -e HeartlandCyberUpdater ))
+then
+	rm -rf HeartlandCyberUpdater
+fi
