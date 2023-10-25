@@ -1,0 +1,5 @@
+1: git clone https://github.com/Gmanbathwater/HeartlandCyberUpdater
+2: cd HeartlandCyberUpdater
+3: chmod +rwx cyberRangeUpdater.sh
+4: ./cyberRangeUpdater.sh
+5: enter info requested
