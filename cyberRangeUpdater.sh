@@ -48,4 +48,4 @@ then
     echo if you recive an error here dont worry, check the student file to ensure that the updater correctly deleted itself. if it didnt dont worry, just be sure to use chmod rwx cyberRangeUpdater.sh next time you update
 	rm -rf HeartlandCyberUpdater
 fi
-echo if you read this you did not fail.
+echo Success!
