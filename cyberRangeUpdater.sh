@@ -1,51 +1,41 @@
 #!/bin/bash
-echo What is your username
+echo "What is your username:"
 read username
-cd ..
-cd ..
-cd ..
-cd ..
-cd ..
-cd home
-cd $username
-if [ -e CourseFiles ]
-then 
-	cd CourseFiles
- 	if [ -e CyberSecurity ]
-  	then
-   		cd CyberSecurity
-     	else
-      		mkdir CyberSecurity
-		cd CyberSecurity
-  	fi
+base_dir="/home/$username"
+clone_repository() {
+	local repo_name="$1"
+ 	local repo_url="$2"
+
+  	if [ -d "$repo_name" ]
+   	then
+    		echo "Repository '$repo_name' already exists, skipping install"
+      	else
+       		git clone "$repo_url"
+	fi
+ }
+#go to the user directiory
+cd "$base_dir" || { echo "Endgame error: Cannot access the user's home directory."; exit 1; }
+
+if [ -d "CourseFiles" ]; then
+    cd "CourseFiles" || { echo "Endgame error: Cannot access 'CourseFiles' directory."; exit 1; }
 else
-	mkdir CourseFiles
-	cd CourseFiles
-	mkdir CyberSecurity
-	cd CyberSecurity
+    mkdir "CourseFiles" || { echo "Endgame error: Cannot create 'CourseFiles' directory."; exit 1; }
+    cd "CourseFiles" || { echo "Endgame error: Cannot access 'CourseFiles' directory."; exit 1; }
 fi
-if [ -e documents ]
-then
-	echo oops: there is nothing to update
+if [ -d "CyberSecurity" ]; then
+    cd "CyberSecurity" || { echo "Endgame error: Cannot access 'CyberSecurity' directory."; exit 1; }
 else
-	git clone https://github.com/cyber-org/documents #change this to change updates
+    mkdir "CyberSecurity" || { echo "Endgame error: Cannot create 'CyberSecurity' directory."; exit 1; }
+    cd "CyberSecurity" || { echo "Endgame error: Cannot access 'CyberSecurity' directory."; exit 1; }
 fi
-if [ -e backdoor ]
-then
-	echo oops: there is nothing to update
-else
-	git clone https://github.com/cyber-org/backdoor
+clone_repository "documents" "https://github.com/cyber-org/documents"
+clone_repository "backdoor" "https://github.com/cyber-org/backdoor"
+
+cd "$base_dir" || { echo "Endgame error: Cannot access the user's home directory."; exit 1; }
+
+if [ -d "HeartlandCyberUpdater" ]; then
+    echo "Removing 'HeartlandCyberUpdater' directory..."
+    rm -rf "HeartlandCyberUpdater"
 fi
-cd ..
-cd ..
-cd ..
-cd ..
-cd ..
-cd home
-cd $username
-if [ -e HeartlandCyberUpdater ]
-then
-    echo if you recive an error here dont worry, check the student file to ensure that the updater correctly deleted itself. if it didnt dont worry, just be sure to use chmod rwx cyberRangeUpdater.sh next time you update
-	rm -rf HeartlandCyberUpdater
-fi
-echo Success!
+
+echo "Success!"
