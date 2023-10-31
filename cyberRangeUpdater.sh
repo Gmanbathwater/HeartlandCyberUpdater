@@ -40,4 +40,4 @@ if [ -d "HeartlandCyberUpdater" ]; then
 fi
 
 echo "Success!"
-shutdown now
+shutdown 
