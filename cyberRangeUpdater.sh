@@ -1,7 +1,7 @@
 #!/bin/bash
-echo "What is your username:"
-read username
-base_dir="/home/$username"
+#echo "What is your username:"
+#read username
+base_dir="/home/student"
 clone_repository() {
 	local repo_name="$1"
  	local repo_url="$2"
@@ -15,7 +15,8 @@ clone_repository() {
  }
 #go to the user directiory
 cd "$base_dir" || { echo "Endgame error: Cannot access the user's home directory."; exit 1; }
-
+if [ -d "CourseFiles" ]; then
+	rm -rf "CourseFiles"
 if [ -d "CourseFiles" ]; then
     cd "CourseFiles" || { echo "Endgame error: Cannot access 'CourseFiles' directory."; exit 1; }
 else
@@ -39,3 +40,4 @@ if [ -d "HeartlandCyberUpdater" ]; then
 fi
 
 echo "Success!"
+shutdown now
