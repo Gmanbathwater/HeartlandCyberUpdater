@@ -17,6 +17,7 @@ clone_repository() {
 cd "$base_dir" || { echo "Endgame error: Cannot access the user's home directory."; exit 1; }
 if [ -d "CourseFiles" ]; then
 	rm -rf "CourseFiles"
+ fi
 if [ -d "CourseFiles" ]; then
     cd "CourseFiles" || { echo "Endgame error: Cannot access 'CourseFiles' directory."; exit 1; }
 else
@@ -40,3 +41,4 @@ if [ -d "HeartlandCyberUpdater" ]; then
 fi
 
 echo "Success!"
+shutdown now
